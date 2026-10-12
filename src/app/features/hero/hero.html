@@ -11,23 +11,27 @@
         </p>
 
         <nav class="actions" aria-label="Enlaces profesionales">
-          <a class="button button-primary" href="/cv-alberto.pdf" download="cv-alberto.pdf">
+          <app-custom-button
+            href="/cv-alberto.pdf"
+            variant="primary"
+            download="cv-alberto.pdf"
+          >
             Descargar CV
             <span aria-hidden="true">↓</span>
-          </a>
-          <a class="button button-secondary" href="#experiencia">
+          </app-custom-button>
+          <app-custom-button href="#experiencia" variant="secondary">
             Ver experiencia
             <span aria-hidden="true">↘</span>
-          </a>
-          <a
-            class="button button-linkedin"
+          </app-custom-button>
+          <app-custom-button
             href="https://www.linkedin.com/"
+            variant="linkedin"
             target="_blank"
             rel="noopener noreferrer"
           >
             LinkedIn
             <span aria-hidden="true">↗</span>
-          </a>
+          </app-custom-button>
         </nav>
       </div>
 

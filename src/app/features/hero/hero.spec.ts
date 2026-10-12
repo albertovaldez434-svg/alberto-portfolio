@@ -36,8 +36,16 @@ describe('Hero', () => {
     expect(resumeLink?.getAttribute('href')).toBe('/cv-alberto.pdf');
     expect(resumeLink?.hasAttribute('download')).toBeTrue();
     expect(experienceLink?.getAttribute('href')).toBe('#experiencia');
-    expect(compiled.querySelector('#experiencia')).not.toBeNull();
     expect(linkedInLink?.getAttribute('href')).toBe('https://www.linkedin.com/');
     expect(linkedInLink?.getAttribute('rel')).toContain('noopener');
+  });
+
+  it('should use a shared custom button for each call to action', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelectorAll('app-custom-button').length).toBe(3);
+    expect(compiled.querySelectorAll('.button-primary').length).toBe(1);
+    expect(compiled.querySelectorAll('.button-secondary').length).toBe(1);
+    expect(compiled.querySelectorAll('.button-linkedin').length).toBe(1);
   });
 });

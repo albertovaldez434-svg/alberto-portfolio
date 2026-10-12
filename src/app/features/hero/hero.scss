@@ -96,54 +96,9 @@ h1 span {
   margin-top: 2rem;
 }
 
-.button {
-  min-height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-  padding: 0.75rem 1.1rem;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  color: #fff3eb;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition:
-    transform 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease;
-}
-
-.button:hover {
-  transform: translateY(-2px);
-}
-
-.button:focus-visible,
 .scroll-cue:focus-visible {
   outline: 3px solid #d5eb0c;
   outline-offset: 4px;
-}
-
-.button-primary {
-  background: linear-gradient(120deg, #ff6b00, #c84b12);
-  box-shadow: 0 8px 24px rgb(255 107 0 / 20%);
-}
-
-.button-primary:hover {
-  background: linear-gradient(120deg, #ff8126, #d95a1b);
-}
-
-.button-secondary,
-.button-linkedin {
-  border-color: rgb(255 197 197 / 25%);
-  background: rgb(255 255 255 / 4%);
-}
-
-.button-secondary:hover,
-.button-linkedin:hover {
-  border-color: rgb(255 145 77 / 70%);
-  background: rgb(255 107 0 / 10%);
 }
 
 .portrait {
@@ -278,9 +233,6 @@ h1 span {
     grid-template-columns: 1fr;
   }
 
-  .button {
-    width: 100%;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

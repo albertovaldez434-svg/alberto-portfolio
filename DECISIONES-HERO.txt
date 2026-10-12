@@ -29,11 +29,18 @@ Resultado esperado:
 2. Acciones profesionales
 -------------------------
 Decision:
-- "Descargar CV" descarga /cv-alberto.pdf.
-- "Ver experiencia" navega a la seccion con id "experiencia".
-- "LinkedIn" abre https://www.linkedin.com/ en otra pestana.
+- Usar el componente compartido app-custom-button para las tres acciones.
+- Configurar la variante primary para "Descargar CV", secondary para "Ver
+  experiencia" y linkedin para el perfil externo.
+- Mantener los destinos: /cv-alberto.pdf, #experiencia y
+  https://www.linkedin.com/.
+- Abrir LinkedIn en otra pestana.
 
 Motivo:
+- Centralizar el enlace, los atributos y los estilos comunes evita duplicar
+  comportamiento y permite reutilizar el componente en otras secciones.
+- Las variantes conservan las diferencias visuales existentes sin tener tres
+  implementaciones separadas.
 - Las tres acciones solicitadas tienen destinos funcionales desde el inicio.
 - El enlace externo usa rel="noopener noreferrer" al abrir otra pestana.
 - El enlace de experiencia apunta a una seccion que existe en la misma pagina.
@@ -180,8 +187,12 @@ Resultado esperado:
 Archivos principales
 --------------------
 - src/app/features/hero/hero.html: contenido, acciones y retrato de la portada.
-- src/app/features/hero/hero.scss: diseno, estados interactivos y responsive.
+- src/app/features/hero/hero.scss: diseno y responsive de la portada.
 - src/app/features/hero/hero.ts: NgOptimizedImage y configuracion del componente.
+- src/app/shared/custom-button/custom-button.ts: entradas configurables del boton.
+- src/app/shared/custom-button/custom-button.html: enlace y variantes visuales.
+- src/app/shared/custom-button/custom-button.scss: estilos comunes y variantes.
+- src/app/shared/custom-button/custom-button.spec.ts: prueba del comportamiento configurable.
 - src/app/features/sobre-mi/sobre-mi.html: contenido personal y principios de trabajo.
 - src/app/features/sobre-mi/sobre-mi.scss: diseno responsive de Sobre mi.
 - src/app/features/sobre-mi/sobre-mi.ts: configuracion del componente.
