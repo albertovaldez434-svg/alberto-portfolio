@@ -1,0 +1,23 @@
+cd C:\ruta\de\tu\proyecto
+
+git bash:
+    - git init
+
+    - git commit -m "Initial commit"
+
+Crear el repositorio en GitHub
+
+En GitHub:
+    - Haz clic en New Repository.
+    - Escribe el nombre.
+    - No agregues README, .gitignore ni licencia (porque ya tienes un proyecto local).
+    - Crea el repositorio.
+
+GitHub te mostrará una URL similar a:
+
+https://github.com/usuario/mi-proyecto.git
+
+git bash:
+    - git remote add origin https://github.com/usuario/mi-proyecto.git
+    - git remote -v (verifica el repositorio)
+    - git push -u origin main

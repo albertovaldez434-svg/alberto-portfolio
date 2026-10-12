@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/public/fonts/GoogleSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* Fixes layout shifting and blank text issues */
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "CustomFont", sans-serif;
+  color: #ffc5c5;
+  background: linear-gradient(35deg, #431808, #03031e);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+input[type = "button"] {
+  border-radius: 15px;
+  font-size: 14px;
+  background-color: #77280b;
+  color: #ffc5c5;
+  border: none;
+  padding: 8px;
+  //box-shadow: 10px -15px 10px -2px rgb(131 105 33 / 20%);
+}

@@ -1,0 +1,58 @@
+<section id="experiencia" class="experience" aria-labelledby="experience-title">
+  <header class="experience-heading">
+    <p class="section-label"><span aria-hidden="true">02</span> Trayectoria profesional</p>
+    <h2 id="experience-title">Construyendo soluciones<br /><span>que mueven el día a día.</span></h2>
+    <p class="experience-intro">
+      Durante ocho años formé parte de proyectos que conectan a las personas, los equipos y la
+      operación diaria de una empresa de transporte.
+    </p>
+  </header>
+
+  <div class="career-layout">
+    <article class="career-card" aria-labelledby="company-name">
+      <div class="career-card-top">
+        <span class="company-mark" aria-hidden="true">T</span>
+        <span class="career-period">SEP 2017 <span aria-hidden="true">—</span> FEB 2026</span>
+      </div>
+
+      <div class="career-details">
+        <p class="career-label">Experiencia profesional</p>
+        <h3 id="company-name">Corporativo TUFESA</h3>
+        <p class="career-location">
+          <span aria-hidden="true">⌖</span>
+          Ciudad Obregón, Sonora
+        </p>
+        <p class="career-summary">
+          Ocho años colaborando en proyectos digitales y sistemas internos para los servicios y
+          equipos de la organización.
+        </p>
+      </div>
+
+      <div class="career-duration">
+        <strong>8</strong>
+        <span>años de<br />experiencia</span>
+      </div>
+    </article>
+
+    <div class="projects-column">
+      <div class="projects-heading">
+        <h3>Proyectos destacados</h3>
+        <p>Distintas necesidades, un mismo objetivo: hacer más sencilla la operación.</p>
+      </div>
+
+      <div class="project-grid">
+        @for (project of projects; track project.number) {
+          <article class="project-card">
+            <div class="project-topline">
+              <span class="project-number">{{ project.number }}</span>
+              <span class="project-category">{{ project.category }}</span>
+            </div>
+            <h4>{{ project.title }}</h4>
+            <p>{{ project.description }}</p>
+            <span class="project-accent" aria-hidden="true"></span>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,199 @@
+DECISIONES DE DISENO - PORTADA DEL PORTFOLIO
+=============================================
+
+Alcance
+-------
+Este documento registra las decisiones tomadas al transformar el componente Hero
+en la portada de un portfolio de developer. Incluye los motivos, el resultado
+esperado y una descripcion del diseno implementado.
+
+
+1. Contenido principal de la portada
+------------------------------------
+Decision:
+- Mostrar "Hola, soy Alberto", el puesto "Developer" y una breve presentacion.
+- Incluir un indicador "Disponible para nuevos retos".
+
+Motivo:
+- La portada debe comunicar rapidamente quien es el developer, a que se dedica
+  y su disponibilidad profesional.
+- Se uso Alberto y Developer como contenido inicial del portfolio, manteniendo
+  el perfil editable para que se pueda personalizar.
+
+Resultado esperado:
+- Al entrar al sitio, la identidad y el enfoque profesional son visibles sin
+  necesidad de navegar a otra pagina.
+- La descripcion da contexto, pero no reemplaza una biografia completa.
+
+
+2. Acciones profesionales
+-------------------------
+Decision:
+- "Descargar CV" descarga /cv-alberto.pdf.
+- "Ver experiencia" navega a la seccion con id "experiencia".
+- "LinkedIn" abre https://www.linkedin.com/ en otra pestana.
+
+Motivo:
+- Las tres acciones solicitadas tienen destinos funcionales desde el inicio.
+- El enlace externo usa rel="noopener noreferrer" al abrir otra pestana.
+- El enlace de experiencia apunta a una seccion que existe en la misma pagina.
+
+Resultado esperado:
+- Al agregar public/cv-alberto.pdf, el primer boton permite descargarlo.
+- El segundo desplaza al visitante a la seccion de experiencia.
+- El tercer boton abre LinkedIn; debe reemplazarse la URL generica por el perfil
+  real antes de publicar.
+
+Pendiente de personalizacion:
+- Colocar el archivo del curriculum como public/cv-alberto.pdf o actualizar el
+  href y el nombre de descarga en src/app/features/hero/hero.html.
+- Sustituir https://www.linkedin.com/ por la direccion del perfil real.
+
+
+3. Foto de perfil
+-----------------
+Decision:
+- Reservar una columna visual para la foto y entregar un SVG de reemplazo en
+  public/images/profile-placeholder.svg.
+- Mostrar la indicacion "TU FOTO AQUI".
+- Cargar la imagen con NgOptimizedImage, dimensiones declaradas y prioridad.
+
+Motivo:
+- El usuario aun no ha proporcionado una fotografia. Un placeholder local evita
+  una imagen rota y deja claro donde se debe sustituir.
+- Las dimensiones reservadas evitan cambios de layout mientras carga la imagen.
+- La forma recortada y los contornos decorativos integran la foto al estilo
+  visual de la portada.
+
+Resultado esperado:
+- La portada muestra una ilustracion temporal hasta que se cambie el archivo
+  public/images/profile-placeholder.svg por la foto de perfil.
+- Al sustituirla, conservar una imagen vertical ayuda a llenar el marco. Se
+  puede ajustar el object-fit y object-position en hero.scss si es necesario.
+
+
+4. Diseno visual
+----------------
+Concepto:
+- Estilo oscuro y calido que continua la identidad existente, con tonos naranja,
+  marron, azul noche, rosa claro y un acento lima.
+- Composicion tipo tarjeta central de dos columnas en pantallas grandes:
+  texto y acciones a la izquierda; retrato a la derecha.
+- En pantallas estrechas, el retrato aparece arriba y el texto debajo, centrado.
+
+Elementos visuales implementados:
+- Fondo global en degradado marron/azul oscuro, conservando la paleta original.
+- Tarjeta con fondo semitransparente, degradado, borde tenue, esquinas
+  redondeadas y sombra amplia.
+- Nombre destacado en naranja y puesto en rosa claro.
+- Punto lima luminoso junto al estado de disponibilidad.
+- Retrato con marco de esquinas organicas, dos orbitas finas y etiqueta flotante.
+- Boton principal con degradado naranja; acciones secundarias translúcidas con
+  borde claro y respuesta visual al pasar el cursor.
+- Indicacion inferior para desplazarse hacia la experiencia.
+- Decoracion circular tenue dentro de la tarjeta, sin capturar interacciones.
+
+Comportamiento responsive:
+- El contenedor tiene un ancho maximo de 1120 px y mantiene margenes laterales.
+- Por debajo de 760 px, la tarjeta cambia a una columna y centra su contenido.
+- Por debajo de 440 px, los botones ocupan el ancho disponible y se apilan.
+- La altura minima de portada usa 100svh para adaptarse mejor a navegadores
+  moviles.
+
+Accesibilidad y movimiento:
+- La portada usa encabezados y secciones con etiquetas accesibles.
+- Los elementos decorativos se ocultan a tecnologias asistivas.
+- Los enlaces muestran foco de teclado visible.
+- Los enlaces de accion tienen textos comprensibles y los iconos son decorativos.
+- Se reducen las transiciones cuando el sistema solicita movimiento reducido.
+
+Resultado esperado:
+- Una portada legible y equilibrada en escritorio, tablet y movil, que conserva
+  el ambiente visual existente en lugar de introducir un tema ajeno al sitio.
+
+
+5. tsParticles
+--------------
+Decision:
+- Conservar la inicializacion y configuracion existente de tsParticles en
+  src/app/app.ts.
+- Ubicar su canvas como capa fija de fondo, debajo del contenido, y evitar que
+  intercepte clics.
+
+Motivo:
+- Las particulas forman parte del diseno solicitado y no era necesario cambiar
+  su preset ni sus parametros para construir el hero.
+- La capa visual del hero debe quedar por encima del efecto sin bloquearlo.
+
+Resultado esperado:
+- Las particulas siguen visibles como fondo en la portada.
+- Los enlaces y botones permanecen interactivos.
+
+
+6. Recorrido de secciones
+-------------------------
+Decision:
+- Ordenar la pagina como portada, Sobre mi y Experiencia.
+- Mantener la seccion "Experiencia" como destino del boton "Ver experiencia" y
+  de la indicacion de desplazamiento.
+- Presentar Corporativo TUFESA con las fechas septiembre de 2017 a febrero de
+  2026, y Ciudad Obregon, Sonora, como ubicacion.
+- Mostrar cinco proyectos: sitio corporativo, app de pasaje, app ATM Medina,
+  ERP corporativo y app para staff interno.
+
+Motivo:
+- El enlace solicitado necesita un destino real, aunque la trayectoria del
+  developer todavia no fue proporcionada. Sobre mi da contexto personal antes
+  de que el visitante pase a revisar la trayectoria.
+- El contenido ahora refleja la trayectoria proporcionada. No se inventaron
+  titulo formal del puesto, tecnologias, responsabilidades no mencionadas ni
+  resultados cuantificados.
+
+Resultado esperado:
+- El usuario puede navegar al destino desde la portada, y el orden de lectura
+  ofrece primero una presentacion personal y luego la experiencia profesional.
+- La trayectoria se presenta como una tarjeta de empleo y una cuadricula de
+  proyectos, adaptada a pantallas grandes y moviles.
+
+7. Seccion Sobre mi
+-------------------
+Decision:
+- Crear una introduccion personal seguida de una tarjeta con tres principios
+  de trabajo: escuchar, construir en pasos pequenos y pulir.
+- Anadir una tarjeta separada para la vida fuera del trabajo y una frase
+  humoristica: "Mi vida no gira alrededor del codigo. Aunque a veces el codigo
+  si intenta girar alrededor de mi vida."
+
+Motivo:
+- El portfolio debe mostrar a la persona y su forma de colaborar, no limitarse
+  a una lista de herramientas o tecnologias.
+- La broma aporta cercania sin atribuir hobbies, rutinas u otros detalles
+  personales que no han sido proporcionados.
+
+Resultado esperado:
+- Una seccion personal facil de recorrer, con una tarjeta principal para la
+  forma de trabajar y otra visualmente diferenciada para el tiempo libre.
+- El diseno se apila en pantallas estrechas y conserva los colores oscuros,
+  calidos y el acento lima usados en la portada.
+
+
+Archivos principales
+--------------------
+- src/app/features/hero/hero.html: contenido, acciones y retrato de la portada.
+- src/app/features/hero/hero.scss: diseno, estados interactivos y responsive.
+- src/app/features/hero/hero.ts: NgOptimizedImage y configuracion del componente.
+- src/app/features/sobre-mi/sobre-mi.html: contenido personal y principios de trabajo.
+- src/app/features/sobre-mi/sobre-mi.scss: diseno responsive de Sobre mi.
+- src/app/features/sobre-mi/sobre-mi.ts: configuracion del componente.
+- src/app/features/experiencia/experiencia.html: trayectoria y proyectos de TUFESA.
+- src/app/features/experiencia/experiencia.scss: diseno de trayectoria y tarjetas.
+- src/app/features/experiencia/experiencia.ts: datos de proyectos.
+- src/app/app.html: integra Sobre mi y Experiencia despues del hero.
+- src/app/app.scss: posicion de tsParticles.
+- src/styles.scss: ajustes globales de caja, margen y desplazamiento.
+- public/images/profile-placeholder.svg: ilustracion temporal del retrato.
+
+Nota de verificacion
+--------------------
+La compilacion y las pruebas no se ejecutaron en la sesion anterior porque se
+denego el permiso para correr esos comandos.
