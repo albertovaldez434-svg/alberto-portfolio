@@ -1,0 +1,38 @@
+<header class="navbar">
+  <a class="brand" href="#inicio" (click)="closeMenu()" aria-label="Alberto, ir al inicio">
+    <span class="brand-mark" aria-hidden="true">A</span>
+    <span>Alberto</span>
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="primary-navigation"
+    [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+    (click)="toggleMenu()"
+  >
+    <span class="menu-icon" [class.is-open]="menuOpen()" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+
+  <nav
+    id="primary-navigation"
+    class="navigation"
+    [class.is-open]="menuOpen()"
+    aria-label="Navegación principal"
+  >
+    @for (item of navigationItems; track item.href) {
+      <a
+        class="navigation-link"
+        [href]="item.href"
+        (click)="closeMenu()"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+</header>

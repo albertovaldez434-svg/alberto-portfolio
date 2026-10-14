@@ -10,11 +10,12 @@
 }
 
 .hero {
-  min-height: 100svh;
+  min-height: calc(100svh - 68px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-block: 3rem 2rem;
+  scroll-margin-top: 5.5rem;
 }
 
 .hero-card {
@@ -219,6 +220,7 @@ h1 span {
   }
 
   .hero {
+    min-height: calc(100svh - 64px);
     padding-block: 1.5rem 1rem;
   }
 

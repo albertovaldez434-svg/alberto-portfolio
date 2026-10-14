@@ -6,6 +6,9 @@ import { loadSlim } from "@tsparticles/slim";
 import { Hero } from './features/hero/hero';
 import { Experiencia } from './features/experiencia/experiencia';
 import { SobreMi } from './features/sobre-mi/sobre-mi';
+import { Logros } from './features/logros/logros';
+import { Contacto } from './features/contacto/contacto';
+import { Navbar } from './core/navbar/navbar';
 
 await loadSlim(tsParticles);
 await loadFirePreset(tsParticles)
@@ -92,7 +95,7 @@ await tsParticles.load({
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Hero, SobreMi, Experiencia],
+  imports: [RouterOutlet, Navbar, Hero, SobreMi, Experiencia, Logros, Contacto],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -106,4 +109,3 @@ export class App implements OnInit {
   ngOnInit(): void {
   }
 }
-

@@ -23,17 +23,20 @@ describe('App', () => {
     expect(compiled.querySelector('h1')?.textContent).toContain('Alberto');
   });
 
-  it('should place the about section before the experience section', () => {
+  it('should render the portfolio sections in order', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    const aboutSection = compiled.querySelector('#sobre-mi');
-    const experienceSection = compiled.querySelector('#experiencia');
+    const sections = Array.from(
+      compiled.querySelectorAll('#inicio, #sobre-mi, #experiencia, #logros, #contacto'),
+    );
 
-    expect(
-      aboutSection &&
-        experienceSection &&
-        (aboutSection.compareDocumentPosition(experienceSection) & Node.DOCUMENT_POSITION_FOLLOWING),
-    ).toBeTruthy();
+    expect(sections.map((section) => section.id)).toEqual([
+      'inicio',
+      'sobre-mi',
+      'experiencia',
+      'logros',
+      'contacto',
+    ]);
   });
 });

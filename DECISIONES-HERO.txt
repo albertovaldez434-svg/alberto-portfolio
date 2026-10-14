@@ -137,16 +137,21 @@ Resultado esperado:
 - Los enlaces y botones permanecen interactivos.
 
 
-6. Recorrido de secciones
+6. Recorrido y secciones del portfolio
 -------------------------
 Decision:
-- Ordenar la pagina como portada, Sobre mi y Experiencia.
+- Ordenar la pagina como portada, Sobre mi, Experiencia, Logros y Contacto.
 - Mantener la seccion "Experiencia" como destino del boton "Ver experiencia" y
   de la indicacion de desplazamiento.
 - Presentar Corporativo TUFESA con las fechas septiembre de 2017 a febrero de
   2026, y Ciudad Obregon, Sonora, como ubicacion.
 - Mostrar cinco proyectos: sitio corporativo, app de pasaje, app ATM Medina,
   ERP corporativo y app para staff interno.
+- Anadir una seccion Logros que resuma los ocho anos de trayectoria, los cinco
+  proyectos destacados y el alcance entre pasajeros, choferes, staff y sistemas.
+- Anadir una seccion Contacto con email, WhatsApp y LinkedIn.
+- Usar valores de ejemplo claramente identificados para correo, telefono y
+  LinkedIn porque no se proporcionaron datos reales de contacto.
 
 Motivo:
 - El enlace solicitado necesita un destino real, aunque la trayectoria del
@@ -155,12 +160,21 @@ Motivo:
 - El contenido ahora refleja la trayectoria proporcionada. No se inventaron
   titulo formal del puesto, tecnologias, responsabilidades no mencionadas ni
   resultados cuantificados.
+- Los logros resumen datos ya mencionados en el perfil; no afirman impactos,
+  reconocimientos ni resultados que no hayan sido proporcionados.
+- Los datos de contacto quedan marcados para reemplazo y no se presentan como
+  datos personales reales.
 
 Resultado esperado:
 - El usuario puede navegar al destino desde la portada, y el orden de lectura
-  ofrece primero una presentacion personal y luego la experiencia profesional.
+  ofrece primero una presentacion personal, luego experiencia, logros y formas
+  de contacto.
 - La trayectoria se presenta como una tarjeta de empleo y una cuadricula de
   proyectos, adaptada a pantallas grandes y moviles.
+- Los logros se muestran en tres tarjetas y el contacto en enlaces faciles de
+  identificar, con distribucion responsive.
+- Los enlaces de Contacto deben actualizarse antes de publicar para evitar que
+  los valores de ejemplo se confundan con datos reales.
 
 7. Seccion Sobre mi
 -------------------
@@ -183,9 +197,38 @@ Resultado esperado:
 - El diseno se apila en pantallas estrechas y conserva los colores oscuros,
   calidos y el acento lima usados en la portada.
 
+8. Navegacion principal
+-----------------------
+Decision:
+- Agregar un componente Navbar en src/app/core/navbar con enlaces de ancla a
+  Inicio, Sobre mi, Experiencia, Logros y Contacto.
+- Mantener la barra fija al borde superior durante el desplazamiento.
+- En pantallas pequenas, usar un boton de menu accesible que abre y cierra
+  los enlaces; seleccionar un enlace cierra el menu.
+- Ajustar la posicion de desplazamiento de las secciones para que sus titulos
+  no queden ocultos debajo de la barra.
+
+Motivo:
+- La navegacion permite llegar directamente a cada seccion del portfolio.
+- En movil, un menu desplegable mantiene los enlaces disponibles sin ocupar
+  permanentemente el ancho de pantalla.
+- El estado expandido del menu se comunica con aria-expanded y el boton tiene
+  etiqueta accesible.
+
+Resultado esperado:
+- En escritorio se muestra una barra con los cinco enlaces y el nombre.
+- En movil se muestra una barra compacta y un menu desplegable.
+- Cada enlace corresponde al id de una seccion existente.
+- Al navegar por anclas, el encabezado de la seccion queda visible debajo del
+  navbar sticky.
+
 
 Archivos principales
 --------------------
+- src/app/core/navbar/navbar.ts: estado y enlaces de navegacion.
+- src/app/core/navbar/navbar.html: barra y menu responsive.
+- src/app/core/navbar/navbar.scss: estilos sticky, visuales y responsive.
+- src/app/core/navbar/navbar.spec.ts: pruebas de destinos y menu.
 - src/app/features/hero/hero.html: contenido, acciones y retrato de la portada.
 - src/app/features/hero/hero.scss: diseno y responsive de la portada.
 - src/app/features/hero/hero.ts: NgOptimizedImage y configuracion del componente.
@@ -199,7 +242,15 @@ Archivos principales
 - src/app/features/experiencia/experiencia.html: trayectoria y proyectos de TUFESA.
 - src/app/features/experiencia/experiencia.scss: diseno de trayectoria y tarjetas.
 - src/app/features/experiencia/experiencia.ts: datos de proyectos.
-- src/app/app.html: integra Sobre mi y Experiencia despues del hero.
+- src/app/features/logros/logros.html: resumen de trayectoria y aportes.
+- src/app/features/logros/logros.scss: presentacion responsive de logros.
+- src/app/features/logros/logros.ts: datos de logros basados en el perfil.
+- src/app/features/logros/logros.spec.ts: pruebas del resumen de logros.
+- src/app/features/contacto/contacto.html: email, WhatsApp y LinkedIn de ejemplo.
+- src/app/features/contacto/contacto.scss: diseno responsive de contacto.
+- src/app/features/contacto/contacto.ts: configuracion del componente.
+- src/app/features/contacto/contacto.spec.ts: pruebas de enlaces de contacto.
+- src/app/app.html: integra todas las secciones del portfolio despues del hero.
 - src/app/app.scss: posicion de tsParticles.
 - src/styles.scss: ajustes globales de caja, margen y desplazamiento.
 - public/images/profile-placeholder.svg: ilustracion temporal del retrato.
