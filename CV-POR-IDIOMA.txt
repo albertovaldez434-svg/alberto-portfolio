@@ -1,0 +1,39 @@
+DOCUMENTO DE CV SEGUN EL IDIOMA
+==============================
+
+Implementacion
+--------------
+El boton de descarga del Hero obtiene su destino y nombre de archivo de una
+configuracion asociada al idioma actual:
+
+- Espanol (ES):
+  URL: /files/CV_Alberto_Valdez_Lopez_2026.pdf
+  Descarga: CV_Alberto_Valdez_Lopez_2026.pdf
+
+- Ingles (EN):
+  URL provisional: /files/CV_Alberto_Valdez_Lopez_2026_EN.pdf
+  Descarga: CV_Alberto_Valdez_Lopez_2026_EN.pdf
+
+La ruta inglesa se utiliza como placeholder mientras se decide si ese es el
+documento definitivo. El archivo actualmente existe en public/files, por lo
+que el enlace no queda roto mientras tanto.
+
+Como reemplazar el placeholder
+------------------------------
+Cuando se elija el CV ingles definitivo:
+
+1. Colocar el PDF elegido en public/files.
+2. Actualizar la propiedad href del idioma en constante RESUME_FILES en
+   src/app/features/hero/hero.ts.
+3. Actualizar downloadName en la misma entrada para que el nombre descargado
+   coincida con el archivo elegido.
+
+La seleccion de idioma se persiste en localStorage. El toggle ES/EN recarga la
+aplicacion, por lo que el componente Hero inicializa esta configuracion con
+el idioma seleccionado y cambia el href y el nombre del documento juntos.
+
+Verificacion
+------------
+Se actualizo la prueba del Hero para comprobar el destino y el nombre de
+descarga tanto en espanol como en ingles. No se ejecutaron comandos de npm,
+consola ni pruebas.

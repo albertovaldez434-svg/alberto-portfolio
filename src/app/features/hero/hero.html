@@ -8,7 +8,7 @@
         <p class="description">{{ copy.description }}</p>
 
         <nav class="actions" [attr.aria-label]="copy.actions">
-          <app-custom-button href="/files/CV_Alberto_Valdez_Lopez_2026.pdf" variant="primary" download="cv-alberto.pdf">
+          <app-custom-button [href]="resume.href" variant="primary" [download]="resume.downloadName">
             {{ copy.download }}
             <span aria-hidden="true">↓</span>
           </app-custom-button>

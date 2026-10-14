@@ -1,6 +1,18 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CustomButton } from '../../shared/custom-button/custom-button';
+import { getPortfolioLanguage } from '../../core/i18n/localization';
+
+const RESUME_FILES = {
+  es: {
+    href: '/files/CV_Alberto_Valdez_Lopez_2026.pdf',
+    downloadName: 'CV_Alberto_Valdez_Lopez_2026.pdf',
+  },
+  en: {
+    href: '/files/CV_Alberto_Valdez_Lopez_2026_EN.pdf',
+    downloadName: 'CV_Alberto_Valdez_Lopez_2026_EN.pdf',
+  },
+} as const;
 
 @Component({
   selector: 'app-hero',
@@ -10,6 +22,8 @@ import { CustomButton } from '../../shared/custom-button/custom-button';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Hero {
+  protected readonly resume = RESUME_FILES[getPortfolioLanguage()];
+
   protected readonly copy = {
     available: $localize`:@@hero.available:Disponible para nuevos retos`,
     greeting: $localize`:@@hero.greeting:Hola, soy`,

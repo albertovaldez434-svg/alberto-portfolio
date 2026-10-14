@@ -46,7 +46,9 @@ Por componente
 2. Hero (src/app/features/hero)
    - Saludo, puesto, disponibilidad, descripcion, etiqueta de acciones y texto
      del CV/experiencia se definen como mensajes $localize en el componente.
-   - Los enlaces, nombre propio, archivo del CV y URL de LinkedIn no cambian.
+   - Los enlaces de experiencia y LinkedIn, y el nombre propio no cambian.
+   - El href y el nombre descargado del CV se seleccionan segun el idioma; la
+     ruta inglesa actual es provisional hasta confirmar el documento definitivo.
    - El texto alternativo de la foto, su descripcion accesible y la indicacion
      de desplazamiento tambien se localizan.
    - El contenido de los botones compartidos se traduce desde el Hero, donde
