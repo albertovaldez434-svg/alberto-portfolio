@@ -22,16 +22,10 @@ describe('Contacto', () => {
       'WhatsApp',
       'LinkedIn',
     ]);
-    expect(links.at(0)?.getAttribute('href')).toBe('mailto:correo@ejemplo.com');
-    expect(links.at(1)?.getAttribute('href')).toContain('wa.me');
-    expect(links.at(2)?.getAttribute('href')).toContain('linkedin.com');
-  });
-
-  it('should identify the contact details as placeholders', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    expect(compiled.querySelector('.placeholder-note')?.textContent).toContain(
-      'reemplázalos por tu correo',
+    expect(links.at(0)?.getAttribute('href')).toBe('mailto:albertovaldez434@gmail.com');
+    expect(links.at(1)?.getAttribute('href')).toBe('https://wa.me/526441727482');
+    expect(links.at(2)?.getAttribute('href')).toBe(
+      'https://www.linkedin.com/in/albertovaldez434',
     );
   });
 });

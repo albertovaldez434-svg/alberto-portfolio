@@ -5,6 +5,8 @@ describe('Navbar', () => {
   let fixture: ComponentFixture<Navbar>;
 
   beforeEach(async () => {
+    window.localStorage.removeItem('alberto-portfolio-language');
+
     await TestBed.configureTestingModule({
       imports: [Navbar],
     }).compileComponents();
@@ -42,5 +44,16 @@ describe('Navbar', () => {
     fixture.detectChanges();
     expect(toggle?.getAttribute('aria-expanded')).toBe('false');
     expect(compiled.querySelector('.navigation')?.classList.contains('is-open')).toBeFalse();
+  });
+
+  it('should show Spanish as the initial language and expose a language switch', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const toggle = compiled.querySelector<HTMLButtonElement>('.language-toggle');
+    const spanishLabel = toggle?.querySelector('span:first-child');
+    const englishLabel = toggle?.querySelector('span:last-child');
+
+    expect(spanishLabel?.classList.contains('is-selected')).toBeTrue();
+    expect(englishLabel?.classList.contains('is-selected')).toBeFalse();
+    expect(toggle?.getAttribute('aria-label')).toContain('Español');
   });
 });

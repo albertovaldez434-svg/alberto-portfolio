@@ -22,9 +22,7 @@ describe('Hero', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
     expect(compiled.querySelector('h1')?.textContent).toContain('Alberto');
-    expect(compiled.querySelector('img')?.getAttribute('src')).toBe(
-      '/images/profile-placeholder.svg',
-    );
+    expect(compiled.querySelector('img')?.getAttribute('src')).toBe('/images/cartoon_avatar.png');
   });
 
   it('should provide working destinations for the main calls to action', () => {
@@ -33,10 +31,12 @@ describe('Hero', () => {
     const experienceLink = compiled.querySelector<HTMLAnchorElement>('.button-secondary');
     const linkedInLink = compiled.querySelector<HTMLAnchorElement>('.button-linkedin');
 
-    expect(resumeLink?.getAttribute('href')).toBe('/cv-alberto.pdf');
+    expect(resumeLink?.getAttribute('href')).toBe('/files/CV_Alberto_Valdez_Lopez_2026.pdf');
     expect(resumeLink?.hasAttribute('download')).toBeTrue();
     expect(experienceLink?.getAttribute('href')).toBe('#experiencia');
-    expect(linkedInLink?.getAttribute('href')).toBe('https://www.linkedin.com/');
+    expect(linkedInLink?.getAttribute('href')).toBe(
+      'https://www.linkedin.com/in/albertovaldez434',
+    );
     expect(linkedInLink?.getAttribute('rel')).toContain('noopener');
   });
 

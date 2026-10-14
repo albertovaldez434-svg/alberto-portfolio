@@ -222,13 +222,38 @@ Resultado esperado:
 - Al navegar por anclas, el encabezado de la seccion queda visible debajo del
   navbar sticky.
 
+9. Selector de idioma
+---------------------
+Decision:
+- Agregar un control visual ES / EN al extremo derecho del navbar.
+- El espanol queda como idioma fuente y el catalogo ingles se carga con
+  @angular/localize y loadTranslations antes del bootstrap.
+- Guardar el idioma seleccionado en localStorage y recargar la pagina para que
+  los mensajes $localize de todos los componentes se evalúen con ese catalogo.
+- Actualizar lang del documento y titulo de pestana al iniciar.
+
+Motivo:
+- Las traducciones runtime de Angular Localize deben estar cargadas antes de
+  evaluar los mensajes; recargar al cambiar el idioma evita dejar vistas ya
+  renderizadas en el locale anterior.
+- Mostrar el idioma seleccionado a teclado y lector de pantalla.
+
+Resultado esperado:
+- ES aparece seleccionado por defecto y el boton alterna el indicador a EN.
+- El idioma elegido se conserva entre visitas y actualiza los textos de todas
+  las secciones al volver a cargar.
+
 
 Archivos principales
 --------------------
 - src/app/core/navbar/navbar.ts: estado y enlaces de navegacion.
 - src/app/core/navbar/navbar.html: barra y menu responsive.
 - src/app/core/navbar/navbar.scss: estilos sticky, visuales y responsive.
-- src/app/core/navbar/navbar.spec.ts: pruebas de destinos y menu.
+- src/app/core/navbar/navbar.spec.ts: pruebas de destinos, menu e idioma.
+- src/app/core/i18n/localization.ts: persistencia, catalogo ingles e inicio de locale.
+- I18N-IMPLEMENTACION.txt: detalle de i18n por componente.
+- src/main.ts: inicializacion de traducciones antes de bootstrap.
+- src/index.html: locale inicial del documento.
 - src/app/features/hero/hero.html: contenido, acciones y retrato de la portada.
 - src/app/features/hero/hero.scss: diseno y responsive de la portada.
 - src/app/features/hero/hero.ts: NgOptimizedImage y configuracion del componente.
@@ -246,14 +271,14 @@ Archivos principales
 - src/app/features/logros/logros.scss: presentacion responsive de logros.
 - src/app/features/logros/logros.ts: datos de logros basados en el perfil.
 - src/app/features/logros/logros.spec.ts: pruebas del resumen de logros.
-- src/app/features/contacto/contacto.html: email, WhatsApp y LinkedIn de ejemplo.
+- src/app/features/contacto/contacto.html: email, WhatsApp y LinkedIn.
 - src/app/features/contacto/contacto.scss: diseno responsive de contacto.
 - src/app/features/contacto/contacto.ts: configuracion del componente.
 - src/app/features/contacto/contacto.spec.ts: pruebas de enlaces de contacto.
 - src/app/app.html: integra todas las secciones del portfolio despues del hero.
 - src/app/app.scss: posicion de tsParticles.
 - src/styles.scss: ajustes globales de caja, margen y desplazamiento.
-- public/images/profile-placeholder.svg: ilustracion temporal del retrato.
+- public/images/cartoon_avatar.png: imagen de perfil.
 
 Nota de verificacion
 --------------------

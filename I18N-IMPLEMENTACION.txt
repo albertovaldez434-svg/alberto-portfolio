@@ -1,0 +1,126 @@
+IMPLEMENTACION DE I18N ES/EN
+============================
+
+Alcance
+-------
+Se implemento cambio entre espanol (ES) e ingles (EN) con @angular/localize.
+El espanol es el texto fuente y el idioma inicial. Las traducciones al ingles
+se cargan al iniciar la aplicacion.
+
+
+Como funciona el cambio de idioma
+--------------------------------
+Angular Localize ofrece dos mecanismos diferentes:
+
+1. Los atributos i18n de plantillas se traducen durante la compilacion del
+   locale. Por si solos no reemplazan el texto de componentes ya renderizados.
+2. loadTranslations() carga un catalogo para mensajes $localize en runtime,
+   pero el catalogo debe estar disponible antes de evaluar esos mensajes.
+
+Por ese motivo, el control del navbar guarda el locale seleccionado en
+localStorage y recarga la pagina. En el siguiente inicio, main.ts lee la
+preferencia, carga el catalogo ingles antes de crear la aplicacion y despues
+Angular instancia los componentes con sus mensajes localizados. Para volver a
+espanol se sigue el mismo flujo con el texto fuente, sin catalogo adicional.
+
+La preferencia se conserva entre visitas. El atributo lang del elemento html
+y el titulo de la pestana se actualizan al iniciar segun el locale elegido.
+Los codigos ES y EN permanecen visibles en el selector para que la accion de
+cambio sea clara en ambos idiomas.
+
+
+Por componente
+--------------
+
+1. Navbar (src/app/core/navbar)
+   - Los nombres de las cinco secciones, la etiqueta de navegacion, los nombres
+     accesibles de marca y menu, y el nombre accesible del selector usan
+     mensajes $localize con IDs estables.
+   - El boton muestra ES/EN y resalta el locale actual guardado.
+   - aria-pressed comunica si EN es el locale seleccionado, y su nombre
+     accesible informa el idioma activo.
+   - Al pulsarlo, guarda el otro locale y recarga para inicializar Angular con
+     el catalogo correspondiente.
+   - El estado del menu movil sigue siendo independiente del locale.
+
+2. Hero (src/app/features/hero)
+   - Saludo, puesto, disponibilidad, descripcion, etiqueta de acciones y texto
+     del CV/experiencia se definen como mensajes $localize en el componente.
+   - Los enlaces, nombre propio, archivo del CV y URL de LinkedIn no cambian.
+   - El texto alternativo de la foto, su descripcion accesible y la indicacion
+     de desplazamiento tambien se localizan.
+   - El contenido de los botones compartidos se traduce desde el Hero, donde
+     se define cada etiqueta proyectada.
+
+3. Sobre mi (src/app/features/sobre-mi)
+   - Se localizan encabezados, introduccion, forma de trabajo, cada principio,
+     seccion fuera del horario laboral, texto y frase humoristica.
+   - Las tres acciones de trabajo se mantienen como lista; los numeros y el
+     diseno de la lista no dependen del idioma.
+
+4. Experiencia (src/app/features/experiencia)
+   - Se localizan encabezados, introduccion, etiquetas de empleo, duracion,
+     resumen y titulo de proyectos.
+   - Cada proyecto conserva su estructura y sus datos de TUFESA, y traduce
+     nombre, descripcion y categoria.
+   - Nombres propios, ciudad y empresa se mantienen sin traducir.
+
+5. Logros (src/app/features/logros)
+   - Se localizan encabezados, introduccion y los titulos, etiquetas y
+     descripciones de las tres tarjetas.
+   - Las cifras y el alcance de los logros se conservan en ambos idiomas.
+
+6. Contacto (src/app/features/contacto)
+   - Se localizan encabezado, invitacion, etiqueta accesible de los medios,
+     nombres de los medios, pie de pagina y enlace para volver al inicio.
+   - Correo, telefono, URL de WhatsApp y perfil de LinkedIn son datos propios,
+     no texto de interfaz, por lo que se mantienen iguales.
+
+7. CustomButton (src/app/shared/custom-button)
+   - El componente no contiene etiquetas de interfaz propias: recibe el texto
+     traducido mediante ng-content desde el componente que lo utiliza.
+   - Las variantes visuales y los atributos href, download, target y rel no
+     cambian al alternar el idioma.
+
+8. App (src/app/app)
+   - App integra los componentes y no agrega texto visible propio.
+   - El titulo de la pestana y lang del documento se inicializan desde el
+     modulo de localizacion antes de bootstrap.
+
+
+Archivos principales
+--------------------
+- src/app/core/i18n/localization.ts: locale persistido, catalogo ingles,
+  carga de traducciones, lang/title del documento y cambio con recarga.
+- src/app/core/i18n/localization.spec.ts: pruebas del idioma inicial y la
+  preferencia guardada.
+- src/main.ts: carga la localizacion antes de bootstrapApplication.
+- src/app/core/navbar/navbar.ts y navbar.html: selector, enlaces y etiquetas
+  localizadas del navbar.
+- src/app/features/hero/hero.ts y hero.html: mensajes del Hero.
+- src/app/features/sobre-mi/sobre-mi.ts y sobre-mi.html: mensajes personales.
+- src/app/features/experiencia/experiencia.ts y experiencia.html: trayectoria
+  y proyectos localizados.
+- src/app/features/logros/logros.ts y logros.html: tarjetas de logros.
+- src/app/features/contacto/contacto.ts y contacto.html: textos de contacto.
+- src/index.html: idioma inicial del documento, es.
+- package.json y package-lock.json: @angular/localize en dependencies porque
+  loadTranslations se usa desde codigo de ejecucion.
+
+
+Como agregar o corregir una traduccion
+--------------------------------------
+1. En el componente, envolver el texto fuente espanol en un mensaje $localize
+   con un ID unico, por ejemplo:
+   $localize`:@@hero.available:Disponible para nuevos retos`
+2. Agregar el mismo ID al objeto englishTranslations en
+   src/app/core/i18n/localization.ts con su texto ingles.
+3. Confirmar que los textos accesibles y alternativos tambien esten cubiertos.
+
+Las hojas SCSS, cifras, marcas, direcciones de contacto y decoraciones no se
+traducen, salvo que pasen a expresar texto visible.
+
+
+Verificacion
+------------
+No se ejecutaron comandos de npm, consola ni pruebas como parte de esta tarea.

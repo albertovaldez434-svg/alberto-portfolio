@@ -2,57 +2,41 @@
   <section id="inicio" class="hero" aria-labelledby="hero-title">
     <div class="hero-card">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Disponible para nuevos retos</p>
-        <h1 id="hero-title">Hola, soy <span>Alberto</span></h1>
-        <p class="role">Developer</p>
-        <p class="description">
-          Desarrollo experiencias digitales claras y funcionales. Me gusta convertir ideas en
-          productos útiles, cuidando tanto los detalles como a las personas que los usan.
-        </p>
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> {{ copy.available }}</p>
+        <h1 id="hero-title">{{ copy.greeting }} <span>Alberto</span></h1>
+        <p class="role">{{ copy.role }}</p>
+        <p class="description">{{ copy.description }}</p>
 
-        <nav class="actions" aria-label="Enlaces profesionales">
-          <app-custom-button
-            href="/cv-alberto.pdf"
-            variant="primary"
-            download="cv-alberto.pdf"
-          >
-            Descargar CV
+        <nav class="actions" [attr.aria-label]="copy.actions">
+          <app-custom-button href="/files/CV_Alberto_Valdez_Lopez_2026.pdf" variant="primary" download="cv-alberto.pdf">
+            {{ copy.download }}
             <span aria-hidden="true">↓</span>
           </app-custom-button>
           <app-custom-button href="#experiencia" variant="secondary">
-            Ver experiencia
+            {{ copy.experience }}
             <span aria-hidden="true">↘</span>
           </app-custom-button>
-          <app-custom-button
-            href="https://www.linkedin.com/"
-            variant="linkedin"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <app-custom-button href="https://www.linkedin.com/in/albertovaldez434" variant="linkedin" target="_blank"
+            rel="noopener noreferrer">
             LinkedIn
             <span aria-hidden="true">↗</span>
           </app-custom-button>
         </nav>
       </div>
 
-      <div class="portrait" aria-label="Espacio para la foto de perfil de Alberto">
+      <div class="portrait" [attr.aria-label]="copy.portrait">
         <span class="portrait-orbit portrait-orbit-back" aria-hidden="true"></span>
         <span class="portrait-orbit portrait-orbit-front" aria-hidden="true"></span>
-        <img
-          ngSrc="/images/profile-placeholder.svg"
-          width="360"
-          height="400"
-          priority
-          alt="Ilustración de perfil de reemplazo para Alberto"
-        />
-        <span class="portrait-caption">TU FOTO AQUÍ</span>
+        <img ngSrc="/images/cartoon_avatar.png" width="360" height="400" priority
+          [alt]="copy.portraitAlt" />
+        <!-- <span class="portrait-caption">TU FOTO AQUÍ</span> -->
       </div>
 
       <span class="card-decoration" aria-hidden="true"></span>
     </div>
     <a class="scroll-cue" href="#experiencia">
       <span aria-hidden="true">↓</span>
-      Desliza para conocer mi trayectoria
+      {{ copy.scroll }}
     </a>
   </section>
 </main>

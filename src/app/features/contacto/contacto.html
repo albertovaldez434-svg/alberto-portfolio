@@ -1,51 +1,45 @@
 <section id="contacto" class="contact" aria-labelledby="contact-title">
   <div class="contact-card">
     <div class="contact-copy">
-      <p class="section-label"><span aria-hidden="true">04</span> Contacto</p>
-      <h2 id="contact-title">¿Hablamos?</h2>
-      <p class="contact-intro">
-        Si tienes una idea, una oportunidad o simplemente quieres saludar, puedes encontrarme por
-        aquí.
-      </p>
-      <p class="placeholder-note">
-        Los datos siguientes son ejemplos: reemplázalos por tu correo, número y perfil reales.
-      </p>
+      <p class="section-label"><span aria-hidden="true">04</span> {{ copy.label }}</p>
+      <h2 id="contact-title">{{ copy.title }}</h2>
+      <p class="contact-intro">{{ copy.intro }}</p>
     </div>
 
-    <div class="contact-links" aria-label="Medios de contacto">
-      <a class="contact-link" href="mailto:correo@ejemplo.com">
+    <div class="contact-links" [attr.aria-label]="copy.methods">
+      <a class="contact-link" href="mailto:albertovaldez434@gmail.com">
         <span class="contact-icon email-icon" aria-hidden="true">@</span>
         <span class="contact-detail">
-          <span class="contact-label">Email</span>
-          <span class="contact-value">correo@ejemplo.com</span>
+          <span class="contact-label">{{ copy.email }}</span>
+          <span class="contact-value">albertovaldez434@gmail.com</span>
         </span>
         <span class="contact-arrow" aria-hidden="true">↗</span>
       </a>
 
       <a
         class="contact-link"
-        href="https://wa.me/5210000000000"
+        href="https://wa.me/526441727482"
         target="_blank"
         rel="noopener noreferrer"
       >
         <span class="contact-icon whatsapp-icon" aria-hidden="true">W</span>
         <span class="contact-detail">
-          <span class="contact-label">WhatsApp</span>
-          <span class="contact-value">+52 1 000 000 0000</span>
+          <span class="contact-label">{{ copy.whatsapp }}</span>
+          <span class="contact-value">+52 6441 72 74 82</span>
         </span>
         <span class="contact-arrow" aria-hidden="true">↗</span>
       </a>
 
       <a
         class="contact-link"
-        href="https://www.linkedin.com/in/tu-perfil/"
+        href="https://www.linkedin.com/in/albertovaldez434"
         target="_blank"
         rel="noopener noreferrer"
       >
         <span class="contact-icon linkedin-icon" aria-hidden="true">in</span>
         <span class="contact-detail">
-          <span class="contact-label">LinkedIn</span>
-          <span class="contact-value">linkedin.com/in/tu-perfil</span>
+          <span class="contact-label">{{ copy.linkedin }}</span>
+          <span class="contact-value">linkedin.com/in/albertovaldez434</span>
         </span>
         <span class="contact-arrow" aria-hidden="true">↗</span>
       </a>
@@ -53,7 +47,7 @@
   </div>
 
   <footer class="contact-footer">
-    <span>Alberto · Developer</span>
-    <a href="#hero-title">Volver al inicio <span aria-hidden="true">↑</span></a>
+    <span>{{ copy.footerRole }}</span>
+    <a href="#inicio">{{ copy.backToTop }} <span aria-hidden="true">↑</span></a>
   </footer>
 </section>
