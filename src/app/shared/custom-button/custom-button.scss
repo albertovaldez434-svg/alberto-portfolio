@@ -40,13 +40,15 @@
 }
 
 .button-secondary,
-.button-linkedin {
+.button-linkedin,
+.button-github {
   border-color: rgb(255 197 197 / 25%);
   background: rgb(255 255 255 / 4%);
 }
 
 .button-secondary:hover,
-.button-linkedin:hover {
+.button-linkedin:hover,
+.button-github:hover {
   border-color: rgb(255 145 77 / 70%);
   background: rgb(255 107 0 / 10%);
 }

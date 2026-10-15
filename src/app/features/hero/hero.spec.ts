@@ -33,6 +33,7 @@ describe('Hero', () => {
     const resumeLink = compiled.querySelector<HTMLAnchorElement>('.button-primary');
     const experienceLink = compiled.querySelector<HTMLAnchorElement>('.button-secondary');
     const linkedInLink = compiled.querySelector<HTMLAnchorElement>('.button-linkedin');
+    const githubLink = compiled.querySelector<HTMLAnchorElement>('.button-github');
 
     expect(resumeLink?.getAttribute('href')).toBe('/files/CV_Alberto_Valdez_Lopez_2026.pdf');
     expect(resumeLink?.getAttribute('download')).toBe('CV_Alberto_Valdez_Lopez_2026.pdf');
@@ -41,15 +42,19 @@ describe('Hero', () => {
       'https://www.linkedin.com/in/albertovaldez434',
     );
     expect(linkedInLink?.getAttribute('rel')).toContain('noopener');
+    expect(githubLink?.getAttribute('href')).toBe('https://github.com/albertovaldez434-svg');
+    expect(githubLink?.getAttribute('target')).toBe('_blank');
+    expect(githubLink?.getAttribute('rel')).toContain('noopener');
   });
 
   it('should use a shared custom button for each call to action', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
-    expect(compiled.querySelectorAll('app-custom-button').length).toBe(3);
+    expect(compiled.querySelectorAll('app-custom-button').length).toBe(4);
     expect(compiled.querySelectorAll('.button-primary').length).toBe(1);
     expect(compiled.querySelectorAll('.button-secondary').length).toBe(1);
     expect(compiled.querySelectorAll('.button-linkedin').length).toBe(1);
+    expect(compiled.querySelectorAll('.button-github').length).toBe(1);
   });
 
   it('should select the provisional English resume when the site language is English', () => {

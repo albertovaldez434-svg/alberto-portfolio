@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-type CustomButtonVariant = 'primary' | 'secondary' | 'linkedin';
+type CustomButtonVariant = 'primary' | 'secondary' | 'linkedin' | 'github';
 
 @Component({
   selector: 'app-custom-button',
