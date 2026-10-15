@@ -1,0 +1,77 @@
+ACCESIBILIDAD DE LA NAVEGACION ENTRE SECCIONES
+==============================================
+
+Que se implemento
+-----------------
+- La logica de teclado vive en el navbar, junto con el listado de secciones
+  que este enlaza; App solo compone las secciones.
+- Se conserva la navegacion secuencial nativa con Tab y Shift+Tab. No se
+  modifico el orden de tabulacion de los enlaces, botones ni controles.
+- Las flechas Arriba y Abajo permiten pasar a la seccion anterior o siguiente
+  cuando el foco esta en contenido estatico de una seccion o en uno de los
+  enlaces de navegacion principal.
+- Desde los enlaces del navbar, el movimiento con flechas parte de la seccion
+  apuntada por el enlace enfocado.
+- Al cambiar de seccion, se desplaza la vista y se enfoca la region destino.
+  Las secciones tienen tabindex="-1" para aceptar foco programatico sin
+  incorporarse como paradas adicionales al recorrido normal de Tab.
+- Cada seccion navegable tiene role="region" y un nombre asociado a su titulo,
+  para que el destino tenga un contexto accesible.
+- La preferencia del sistema por movimiento reducido evita el desplazamiento
+  suave y usa desplazamiento automatico.
+- El navbar incluye una instruccion accesible que explica el uso de Tab y las
+  flechas. Esta instruccion esta localizada en espanol e ingles.
+
+Por que
+-------
+Tab y Shift+Tab son el mecanismo estandar para recorrer controles interactivos
+en una pagina. Se mantienen sin cambios para respetar las convenciones del
+navegador y permitir llegar a cada enlace de seccion.
+
+El navbar es el punto unico para conocer el orden y los destinos de las
+secciones. Mantener ahi tambien la navegacion por flechas evita duplicar ese
+conocimiento en App y hace que enlaces y atajos de teclado sigan la misma
+estructura.
+
+Las flechas son una alternativa directa para saltar entre secciones sin tener
+que recorrer todos los enlaces y controles intermedios. El foco se mueve junto
+con el desplazamiento para que usuarios de teclado y tecnologias asistivas
+sepan en que seccion quedaron.
+
+La navegacion con flechas no intercepta botones, enlaces que no pertenecen al
+navbar, campos de formulario, elementos editables ni controles de rango. Asi,
+sus interacciones habituales con las teclas permanecen intactas. Las teclas
+con modificadores tampoco activan el salto de seccion.
+
+Resultado esperado
+------------------
+- Tab y Shift+Tab recorren los elementos interactivos en el orden del
+  documento.
+- Flecha Abajo desde una seccion lleva a la siguiente; Flecha Arriba lleva a
+  la anterior.
+- Flechas desde un enlace de navegacion saltan a la seccion adyacente al
+  destino de ese enlace.
+- El foco no queda perdido en el navbar despues de saltar: se coloca en la
+  region destino, que puede recibir foco sin cambiar el tab order.
+- En el inicio y final del documento, las flechas no saltan fuera de los
+  limites y el comportamiento normal del navegador se conserva.
+- Botones, campos y demas controles interactivos conservan su comportamiento
+  con flechas.
+
+Archivos relevantes
+-------------------
+- src/app/core/navbar/navbar.ts: el navbar define los destinos y procesa la
+  navegacion por flechas para mantener junta la logica de navegacion.
+- src/app/app.spec.ts: pruebas de avance, retroceso y exclusiones.
+- src/app/core/navbar/navbar.html: instruccion accesible de teclado.
+- src/app/core/i18n/localization.ts: traduccion inglesa de la instruccion.
+- src/app/features/hero/hero.html: region de inicio y foco programatico.
+- src/app/features/sobre-mi/sobre-mi.html: region Sobre mi.
+- src/app/features/experiencia/experiencia.html: region Experiencia.
+- src/app/features/logros/logros.html: region Logros.
+- src/app/features/contacto/contacto.html: region Contacto.
+
+Verificacion
+------------
+Se agregaron pruebas unitarias, pero no se ejecutaron comandos de npm,
+consola ni pruebas en esta tarea.

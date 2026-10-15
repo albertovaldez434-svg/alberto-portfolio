@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { tsParticles } from "@tsparticles/engine";
 import { loadFirePreset } from "@tsparticles/preset-fire";
@@ -99,13 +99,4 @@ await tsParticles.load({
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App implements OnInit {
-
-  protected readonly title = signal('alberto-portfolio');
-
-  constructor() {  }
-
-
-  ngOnInit(): void {
-  }
-}
+export class App {}

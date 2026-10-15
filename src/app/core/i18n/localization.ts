@@ -15,6 +15,8 @@ const englishTranslations: Record<string, string> = {
   'nav.openMenu': 'Open menu',
   'nav.closeMenu': 'Close menu',
   'nav.primary': 'Main navigation',
+  'nav.keyboardHelp':
+    'Use Tab to move through the menu. From a menu link or section content, use the up and down arrow keys to change sections.',
   'nav.switchLanguage': 'Switch language',
   'nav.currentLanguage': 'Current language',
   'nav.spanish': 'Spanish',

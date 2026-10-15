@@ -24,7 +24,11 @@
     class="navigation"
     [class.is-open]="menuOpen()"
     [attr.aria-label]="navigationAriaLabel"
+    aria-describedby="keyboard-navigation-help"
   >
+    <span id="keyboard-navigation-help" class="visually-hidden">
+      {{ keyboardNavigationHelp }}
+    </span>
     @for (item of navigationItems; track item.href) {
       <a
         class="navigation-link"
